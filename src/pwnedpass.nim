@@ -50,4 +50,4 @@ when isMainModule:
       termuiLabel("Wow, Your passphrase look secure,", "NOT Pwned!")
     else:
       termuiLabel("Oh no -- Pwned! Your passphrase was found to be used:", "$1 times!" % [$occurrences])
-      termuiLabel("[**WARN**]", "This password has previously appeared in a data breach and should never be used. If you've ever used it anywhere before, change it!")
+      termuiLabel("[**WARN**]", "This password has previously appeared in a data breach and should never be used.\n\t\tIf you've ever used it anywhere before, change it!")
