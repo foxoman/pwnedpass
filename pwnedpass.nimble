@@ -1,13 +1,12 @@
 # Package based on pwned by "Dominik Picheta"
 
-version       = "1.0.0"
+version       = "2.0.0"
 author        = "Sultan AlIsaee"
 description   = "A client for the Pwned passwords API."
 license       = "MIT"
 srcDir        = "src"
 bin           = @["pwnedpass"]
-
-skipExt = @["nim"]
+installExt    = @["nim"]
 
 # Dependencies
 
