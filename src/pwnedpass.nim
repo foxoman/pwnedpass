@@ -12,7 +12,7 @@
 
   ** See: https://haveibeenpwned.com/Passwords
 ]#
-import std/[sha1, strscans], strutils, puppy, termui
+import std/[sha1, strscans], strutils, puppy
 
 const
   apiUrl = "https://api.pwnedpasswords.com/range/"
@@ -47,6 +47,7 @@ proc pwnedCheck*(password: string): int =
   return rangeCheck(hash)
 
 when isMainModule:
+  import termui
   echo """
            __          __ __    __      __ __
           |__)|  ||\ ||_ |  \  |__) /\ (_ (_
