@@ -3,7 +3,7 @@
            __          __ __    __      __ __
           |__)|  ||\ ||_ |  \  |__) /\ (_ (_
           |   |/\|| \||__|__/  |   /--\__)__)
-                                v: 1.0 @foxoman
+                                v: 2.0 @foxoman
 
   A command line utility that lets you check if a passphrase has been
   pwned using the Pwned Passwords v2 API.
@@ -13,7 +13,7 @@
 
   ** See: https://haveibeenpwned.com/Passwords
 
-see[this article](https://www.troyhunt.com/ive-just-launched-pwned-passwords-version-2/)
+see [this article](https://www.troyhunt.com/ive-just-launched-pwned-passwords-version-2/)
 for more details.
 
 ## Installation
@@ -23,8 +23,15 @@ First get [Nimble](https://github.com/nim-lang/nimble). Then run:
 ```bash
 nimble install https://github.com/foxoman/pwnedpass
 ```
+## API
+```
+import pwnedpass
+let passphrase:string = stdin.readLine()
+let occurance = pwnedCheck(passphrase)
+echo "pwned: ", $occurance, " Times!"
+```
 
-## Usage
+## Usage as binary
 
 ```bash
 $ pwnedpass
