@@ -57,6 +57,9 @@ when isMainModule:
   const ansiForegroundDarkGray* = "\e[90m"
   const ansiForegroundLightGreen* = "\e[92m"
   const ansiForegroundLightBlue* = "\e[94m"
+  # # formatting functions
+  const ansiBold* = "\e[1m"
+  const ansiUnderline* = "\e[2m"
 
   echo """
            __          __ __    __      __ __
@@ -89,5 +92,5 @@ when isMainModule:
       termuiLabel(ansiForegroundRed & "[**WARN**]" & ansiResetStyle, "This password has previously appeared in a data breach\n\t\tand should never be used.\n\t\tIf you've ever used it anywhere before, change it!")
 
   stdout.writeLine "\n" & "*".repeat(70)
-  stdout.write "\n\n\n\t\t\tPRESS ANY KEY TO EXIT!"
+  stdout.write "\n\n\t\t** PRESS" & ansiBold & ansiUnderline & " ENTER " & ansiResetStyle & "KEY TO EXIT **"
   discard stdin.readChar()
