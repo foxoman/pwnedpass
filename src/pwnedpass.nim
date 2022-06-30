@@ -48,6 +48,16 @@ proc pwnedCheck*(password: string): int =
 
 when isMainModule:
   import termui
+  # https://github.com/molnarmark/colorize
+  const ansiResetStyle* = "\e[0m"
+  # foreground colors
+  const ansiForegroundRed* = "\e[31m"
+  const ansiForegroundGreen* = "\e[32m"
+  const ansiForegroundYellow* = "\e[33m"
+  const ansiForegroundDarkGray* = "\e[90m"
+  const ansiForegroundLightGreen* = "\e[92m"
+  const ansiForegroundLightBlue* = "\e[94m"
+
   echo """
            __          __ __    __      __ __
           |__)|  ||\ ||_ |  \  |__) /\ (_ (_
@@ -63,19 +73,21 @@ when isMainModule:
   ** See: https://haveibeenpwned.com/Passwords
 
   """
-  stdout.writeLine "*".repeat(70)
+
+  stdout.writeLine "*".repeat(70) & "\n"
+
   var password = termuiAskPassword("Please enter a passphrase to check if has been pwned:")
   if password.len == 0:
     stderr.writeLine "[*] No passphrase entered."
   else:
     let occurrences = pwnedCheck(password)
     if occurrences == 0:
-      termuiLabel("Wow, Your passphrase look secure.", "NOT Pwned!")
+      termuiLabel(ansiForegroundGreen & "Wow, Your passphrase look secure." & ansiResetStyle, "NOT Pwned!")
     else:
-      termuiLabel("Oh no -- Pwned! Your passphrase was found to be used:",
+      termuiLabel(ansiForegroundRed & "Oh no -- Pwned!" & ansiResetStyle & " Your passphrase was found to be used:",
           "$1 times!" % [$occurrences])
-      termuiLabel("[**WARN**]", "This password has previously appeared in a data breach\n\t\tand should never be used.\n\t\tIf you've ever used it anywhere before, change it!")
+      termuiLabel(ansiForegroundRed & "[**WARN**]" & ansiResetStyle, "This password has previously appeared in a data breach\n\t\tand should never be used.\n\t\tIf you've ever used it anywhere before, change it!")
 
-  stdout.writeLine "*".repeat(70)
+  stdout.writeLine "\n" & "*".repeat(70)
   stdout.write "\n\n\n\t\t\tPRESS ANY KEY TO EXIT!"
   discard stdin.readChar()
