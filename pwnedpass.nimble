@@ -1,6 +1,6 @@
 # Package based on pwned by "Dominik Picheta"
 
-version       = "2.0.1"
+version       = "2.0.2"
 author        = "Sultan AlIsaee"
 description   = "A client and api for the Pwned passwords API."
 license       = "MIT"

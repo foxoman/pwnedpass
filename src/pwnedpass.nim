@@ -2,7 +2,7 @@
              __          __ __    __      __ __
           |__)|  ||\ ||_ |  \  |__) /\ (_ (_
           |   |/\|| \||__|__/  |   /--\__)__)
-                                v: 2.0.1 @foxoman
+                                v: 2.0.2 @foxoman
 
   A command line utility that lets you check if a passphrase has been
   pwned using the Pwned Passwords v3 API.
@@ -25,14 +25,12 @@ proc rangeCheck(hash: SecureHash): int =
 
   let response = Request(url: parseUrl(apiUrl & prefix), verb: "get").fetch()
 
-  var sufx: string
-  var occ: int
-
   if response.code == 200:
     for line in response.body.splitLines():
-      discard scanf(line, "$+:$i", sufx, occ)
-      if suffix == sufx:
-        return occ
+      let (ok, scannedSuffix, occurance) = scanTuple(line, "$+:$i")
+      if ok:
+        if suffix == scannedSuffix:
+          return occurance
   elif response.code == 429:
     stderr.writeLine "[*] Too many requests — the rate limit has been exceeded."
   else:
@@ -65,7 +63,7 @@ when isMainModule:
            __          __ __    __      __ __
           |__)|  ||\ ||_ |  \  |__) /\ (_ (_
           |   |/\|| \||__|__/  |   /--\__)__)
-                                v: 2.0.1 @foxoman
+                                v: 2.0.2 @foxoman
 
   A command line utility that lets you check if a passphrase has been
   pwned using the Pwned Passwords v3 API.
@@ -85,12 +83,16 @@ when isMainModule:
   else:
     let occurrences = pwnedCheck(password)
     if occurrences == 0:
-      termuiLabel(ansiForegroundGreen & "Wow, Your passphrase look secure." & ansiResetStyle, "NOT Pwned!")
+      termuiLabel(ansiForegroundGreen & "Wow, Your passphrase look secure." &
+          ansiResetStyle, "NOT Pwned!")
     else:
-      termuiLabel(ansiForegroundRed & "Oh no -- Pwned!" & ansiResetStyle & " Your passphrase was found to be used:",
-          "$1 times!" % [$occurrences])
-      termuiLabel(ansiForegroundRed & "[**WARN**]" & ansiResetStyle, "This password has previously appeared in a data breach\n\t\tand should never be used.\n\t\tIf you've ever used it anywhere before, change it!")
+      termuiLabel(ansiForegroundRed & "Oh no -- Pwned!" & ansiResetStyle &
+          " Your passphrase was found to be used:",
 
-  stdout.writeLine "\n" & "*".repeat(70)
-  stdout.write "\n\n\t\t** PRESS" & ansiBold & ansiUnderline & " ENTER " & ansiResetStyle & "KEY TO EXIT **"
+"$1 times!" % [$occurrences])
+  termuiLabel(ansiForegroundRed & "[**WARN**]" & ansiResetStyle, "This password has previously appeared in a data breach\n\t\tand should never be used.\n\t\tIf you've ever used it anywhere before, change it!")
+
+stdout.writeLine "\n" & "*".repeat(70)
+  stdout.write "\n\n\t\t** PRESS" & ansiBold & ansiUnderline & " ENTER " &
+      ansiResetStyle & "KEY TO EXIT **"
   discard stdin.readChar()
