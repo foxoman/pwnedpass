@@ -2,7 +2,7 @@
              __          __ __    __      __ __
           |__)|  ||\ ||_ |  \  |__) /\ (_ (_
           |   |/\|| \||__|__/  |   /--\__)__)
-                                v: 2.0.4 @foxoman
+                                v: 2.0.5 @foxoman
 
   A command line utility that lets you check if a passphrase has been
   pwned using the Pwned Passwords v3 API.
@@ -63,7 +63,7 @@ when isMainModule:
            __          __ __    __      __ __
           |__)|  ||\ ||_ |  \  |__) /\ (_ (_
           |   |/\|| \||__|__/  |   /--\__)__)
-                                v: 2.0.4 @foxoman
+                                v: 2.0.5 @foxoman
 
   A command line utility that lets you check if a passphrase has been
   pwned using the Pwned Passwords v3 API.
@@ -88,7 +88,7 @@ when isMainModule:
     else:
       termuiLabel(ansiForegroundRed & "Oh no -- Pwned!" & ansiResetStyle &
           " Your passphrase was found to be used:", "$1 times!" % [$occurrences])
-  termuiLabel(ansiForegroundRed & "[**WARN**]" & ansiResetStyle, "This password has previously appeared in a data breach\n\t\tand should never be used.\n\t\tIf you've ever used it anywhere before, change it!")
+      termuiLabel(ansiForegroundRed & "[**WARN**]" & ansiResetStyle, "This password has previously appeared in a data breach\n\t\tand should never be used.\n\t\tIf you've ever used it anywhere before, change it!")
 
   stdout.writeLine "\n" & "*".repeat(70)
   stdout.write "\n\n\t\t** PRESS" & ansiBold & ansiUnderline & " ENTER " &
