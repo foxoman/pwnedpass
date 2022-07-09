@@ -3,7 +3,7 @@
            __          __ __    __      __ __
           |__)|  ||\ ||_ |  \  |__) /\ (_ (_
           |   |/\|| \||__|__/  |   /--\__)__)
-                                v: 2.0.3 @foxoman
+                                v: 2.0.4 @foxoman
 
   A command line utility that lets you check if a passphrase has been
   pwned using the Pwned Passwords v3 API.
@@ -21,9 +21,14 @@ for more details.
 First get [Nimble](https://github.com/nim-lang/nimble). Then run:
 
 ```bash
-nimble install https://github.com/foxoman/pwnedpass
+nimble install pwnedpass
 ```
 ## API
+```
+pwnedCheck(passphrase)
+```
+
+*Example:*
 ```
 import pwnedpass
 let passphrase:string = stdin.readLine()
