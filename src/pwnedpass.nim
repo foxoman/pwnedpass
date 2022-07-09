@@ -2,7 +2,7 @@
              __          __ __    __      __ __
           |__)|  ||\ ||_ |  \  |__) /\ (_ (_
           |   |/\|| \||__|__/  |   /--\__)__)
-                                v: 2.0.2 @foxoman
+                                v: 2.0.3 @foxoman
 
   A command line utility that lets you check if a passphrase has been
   pwned using the Pwned Passwords v3 API.
@@ -63,7 +63,7 @@ when isMainModule:
            __          __ __    __      __ __
           |__)|  ||\ ||_ |  \  |__) /\ (_ (_
           |   |/\|| \||__|__/  |   /--\__)__)
-                                v: 2.0.2 @foxoman
+                                v: 2.0.3 @foxoman
 
   A command line utility that lets you check if a passphrase has been
   pwned using the Pwned Passwords v3 API.
