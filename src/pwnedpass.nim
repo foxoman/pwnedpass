@@ -87,12 +87,10 @@ when isMainModule:
           ansiResetStyle, "NOT Pwned!")
     else:
       termuiLabel(ansiForegroundRed & "Oh no -- Pwned!" & ansiResetStyle &
-          " Your passphrase was found to be used:",
-
-"$1 times!" % [$occurrences])
+          " Your passphrase was found to be used:", "$1 times!" % [$occurrences])
   termuiLabel(ansiForegroundRed & "[**WARN**]" & ansiResetStyle, "This password has previously appeared in a data breach\n\t\tand should never be used.\n\t\tIf you've ever used it anywhere before, change it!")
 
-stdout.writeLine "\n" & "*".repeat(70)
+  stdout.writeLine "\n" & "*".repeat(70)
   stdout.write "\n\n\t\t** PRESS" & ansiBold & ansiUnderline & " ENTER " &
       ansiResetStyle & "KEY TO EXIT **"
   discard stdin.readChar()
