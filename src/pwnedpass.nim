@@ -1,5 +1,5 @@
 #[
-             __          __ __    __      __ __
+           __          __ __    __      __ __
           |__)|  ||\ ||_ |  \  |__) /\ (_ (_
           |   |/\|| \||__|__/  |   /--\__)__)
                                 v: 2.0.5 @foxoman
@@ -55,7 +55,7 @@ when isMainModule:
   const ansiForegroundDarkGray* = "\e[90m"
   const ansiForegroundLightGreen* = "\e[92m"
   const ansiForegroundLightBlue* = "\e[94m"
-  # # formatting functions
+  # formatting functions
   const ansiBold* = "\e[1m"
   const ansiUnderline* = "\e[2m"
 
